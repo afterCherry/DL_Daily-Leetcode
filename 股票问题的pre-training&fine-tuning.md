@@ -142,7 +142,7 @@ T[i][0][1]=-Infinity; //不允许进行交易，手里有股票，则欠钱了
 // 最简单情况
 dp[-1][0]=0;
 dp[-1][1]=-prices[0];
-
+// 数组索引没有负的
 dp[0][0]=0;
 dp[0][1]=-prices[0];
 ```
@@ -186,7 +186,7 @@ public class Solution {
 
 优化：
 
-从代码回归常识—profit1表示买入，profit1表示休息或者卖出
+从代码回归常识—profit0表示买入，profit1表示休息或者卖出
 
 profit1表示第i天股票价格的相反数的最大值～第i天股票价格的最小值
 
@@ -384,8 +384,6 @@ for(int i=1;i<=k;i++){
 T[i][k][0]=Math.max(T[i-1][k][0],T[i-1][k][1]+prices[i]);
 T[i][k][1]=Math.max(T[i-1][k-1][0]-prices[i],T[i-1][k][1]);
 ```
-
-第二维都是k，则降维成二维数组
 
 ```java
 for(int i=1;i<len;i++){
